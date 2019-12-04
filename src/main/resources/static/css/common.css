@@ -1,0 +1,55 @@
+@charset "utf-8";
+
+/*
+    九日自用公共CSS
+*/
+
+/* 消除 number类型input框的上下箭头 */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+input[type="number"]{
+    -moz-appearance: textfield;
+}
+
+/* 字体加粗 */
+.bold{
+    font-weight: bold;
+}
+
+/* 图片加文字高度改为自动 */
+.thumbnail{
+    height: auto !important;
+}
+
+/* 页面主要内容的div */
+#jr_main{
+    min-height: auto !important;
+    overflow-y: auto !important;
+    padding-bottom: 10px;
+}
+
+#jr_top_nav{
+    margin-bottom: 0;
+}
+
+/* 表格中的内容水平垂直居中 */
+.jr-table th,
+.jr-table td{
+    vertical-align: middle !important;
+    text-align: center; 
+}
+
+fieldset{
+    margin-top: 5px;
+    padding: 10px;
+}
+
+legend{
+    font-size: 14px;
+    font-weight: bold;
+}
+a {
+  cursor:pointer;
+}

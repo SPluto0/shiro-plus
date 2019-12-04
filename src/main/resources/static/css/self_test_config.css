@@ -1,0 +1,35 @@
+/*
+    ziwojiance.html
+    自我检测页面样式
+*/
+
+
+/* table中文本垂直居中水平 */
+.jr_text_middle{
+    vertical-align: middle !important;
+}
+
+/* 章节设定中的两个number框 */
+.jr_input_stsl,.jr_input_mtfz{
+    width: 65px !important;
+}
+
+/* 章节设定表格的每一行 */
+.jr_tab table tr td{
+    padding-top: 5px !important;
+    padding-bottom: 5px !important;
+}
+
+.jr_tab table{
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+
+/* 关闭按钮 */
+.jr_close{
+    font-size: 25px;
+}
+
+.jr_td_th{
+    width: 150px;
+}

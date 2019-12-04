@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>个人信息</title>
+    <!-- CSS -->
+    <link rel="stylesheet" th:href="@{/static/css/bootstarp/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/static/css/sweetalerth:t/sweetalert2.min.css}">
+    <link rel="stylesheet" th:href="@{/static/css/font-awesome/font-awesome.min.css}">
+    <link rel="stylesheet" th:href="@{/static/css/custom/custom.min.css}">
+    <link rel="stylesheet" th:href="@{/static/css/common.css}">
+
+</head>
+
+<body class="nav-md">
+    <div class="container body">
+        <div class="main_container">
+            <div class="col-md-3 left_col">
+                <div class="left_col scroll-view">
+                    <!-- 左边导航栏上的系统名称显示 -->
+                    <div th:replace="common/index_moudle :: nav_title"></div>
+                    <!-- 导航上方的用户信息 -->
+                    <div th:replace="common/index_moudle :: nav_top_userinfo"></div>
+                    <!-- 左边导航栏 -->
+                    <div th:replace="common/index_moudle :: left_menu"></div>
+                    <!-- 左边导航栏底部菜单 -->
+                    <div th:replace="common/index_moudle :: nav_foot"></div>
+                </div>
+            </div>
+            <!-- 头部导航栏 -->
+            <div th:replace="common/index_moudle :: nav_top"></div>
+            <!-- 开始 - 页面内容 -->
+            <div id="jr_main" class="right_col">
+                <!-- 开始 - 头部路径导航条 -->
+                <ol class="breadcrumb">
+                    <li><a href="../index.html">首页</a></li>
+                    <li class="active">个人信息</li>
+                </ol>
+                <!-- 结束 - 头部路径导航条 -->
+
+                <!-- 开始 - 主要内容 -->
+                <div class="col-sm-12">
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <span class="h3">修改账户信息</span>
+                            <span class="h6 text-muted">在下列表单中修改您的账户信息</span>
+                        </div>
+                        <div class="panel-body">
+                            <form class="form-horizontal" method="POST">
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">用户名 :</label>
+                                    <div class="col-sm-4">
+                                        <p class="form-control-static">九日</p>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">所属部门 : </label>
+                                    <div class="col-sm-4">
+                                        <p class="form-control-static">四年级</p>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">担任职务 :</label>
+                                    <div class="col-sm-4">
+                                        <p class="form-control-static">学生</p>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="realName" class="col-sm-2 control-label">真实姓名 :</label>
+                                    <div class="col-sm-4">
+                                        <input type="text" class="form-control" id="realName" placeholder="真实姓名" value="jiuri"
+                                            required>
+                                    </div>
+                                    <span id="helpBlock" class="help-block">
+                                        <span style="color: red">*</span>
+                                        填写用户的真实姓名
+                                    </span>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">积分 :</label>
+                                    <div class="col-sm-4">
+                                        <p class="form-control-static">999</p>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="photo" class="col-sm-2 control-label">用户照片 :</label>
+                                    <div class="col-sm-4">
+                                        <input type="file" class="form-control" id="photo">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="idCard" class="col-sm-2 control-label">证件编号 :</label>
+                                    <div class="col-sm-4">
+                                        <input type="text" class="form-control" id="idCard" placeholder="证件编号" value="">
+                                    </div>
+                                    <span id="helpBlock" class="help-block">非必填，可以填写学号、工号或其他唯一编号</span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="tel" class="col-sm-2 control-label">联系电话 :</label>
+                                    <div class="col-sm-4">
+                                        <input type="tel" class="form-control" id="tel" placeholder="联系电话" value="">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email" class="col-sm-2 control-label">电子信箱 :</label>
+                                    <div class="col-sm-4">
+                                        <input type="email" class="form-control" id="email" placeholder="电子信箱" value="">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="address" class="col-sm-2 control-label">联系地址 :</label>
+                                    <div class="col-sm-4">
+                                        <input type="text" class="form-control" id="address" placeholder="联系地址" value="">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">用户状态 :</label>
+                                    <div class="col-sm-4">
+                                        <p class="form-control-static">正常</p>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="remarks" class="col-sm-2 control-label">备注 :</label>
+                                    <div class="col-sm-4">
+                                        <input type="text" class="form-control" id="remarks" placeholder="备注" value="">
+                                    </div>
+                                </div>
+                                <div class="col-sm-3 text-right">
+                                    <button type="button" class="btn btn-primary">提交</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- 开始 - 最底部的声明啥的 -->
+                <div id="jr_foot" class="text-center">
+                    This is our graduation project, we must take it seriously
+                    <a href="" target="_blank" title="">北大青鸟·科泰教育</a>
+                    - Collect from
+                    <a href="" title="" target="_blank"></a>
+                </div>
+                <!-- 结束 - 最底部的声明啥的 -->
+            </div>
+            <!-- 结束 - 主要内容 -->
+        </div>
+        <!-- 结束 - 页面内容 -->
+
+    </div>
+    </div>
+
+</body>
+
+<!-- javaScript -->
+<script th:src="@{/static/js/jquery.min.js}"></script>
+<script th:src="@{/static/js/bootstarp/bootstrap.min.js}"></script>
+<script th:src="@{/static/js/sweetalert/sweetalert2.min.js}"></script>
+<script th:src="@{/static/js/custom/custom.min.js}"></script>
+<script th:src="@{/static/js/layout.js}"></script>
+<script th:src="@{/static/js/common.js}"></script>
+</html>

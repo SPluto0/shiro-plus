@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.future.shiroplus.mapper.UserDTOMapper">
+
+    <select id="findUserDTOByUserNameTO" resultType="com.future.shiroplus.domain.dto.UserDTO">
+        select * from user where user_name =#{userName}
+    </select>
+
+    <select id="findUserDTOByUserName" parameterType="string" resultType="com.future.shiroplus.domain.dto.UserDTO">
+      SELECT
+        u.user_id,
+        u.`user_name`,
+        u.`pwd`,
+        r.role_name,
+        p.permission_name,
+        p.remark,
+        p.url
+      FROM
+        role r,
+        `user` u,
+        permission p,
+        user_role ur,
+        role_permission rp
+      WHERE
+        u.user_name = #{username}
+        AND u.user_id = ur.user_id
+        AND ur.role_id = r.role_id
+        AND p.permission_id = rp.permission_id
+        AND rp.role_id = r.role_id
+    </select>
+</mapper>

@@ -1,0 +1,63 @@
+
+
+/**/
+/*搜索模块*/
+.col-center-block{
+    position: relative;
+    top:20%;
+}
+
+/*文本搜索输入框*/
+#textSearch>input{
+	height:60px;
+	border-right: none;
+}
+
+#textSearch>.microphone,.fgf{
+	background-color: #FFFFFF;
+	border-left: none;
+	border-right: none;
+	cursor:pointer;
+}
+
+#textSearch>.picSearch{
+	background-color: #FFFFFF;
+	border-left: none;
+	cursor:pointer;
+}
+
+#textSearch>span>button {
+	height:60px;
+	font-size: 20px;
+}
+
+/*图片搜索框*/
+/*#imageSearch{
+	display: none;
+}*/
+#imageSearch>input{
+	height:60px;
+	border-right: none;
+}
+#imageSearch>span>button {
+	height:60px;
+	font-size: 20px;
+}
+
+/*图片拖拽区域*/
+#picHere>form>.picHereBtn{
+	border:solid 1px #DDDDDD;
+	text-align: center;
+	padding-top: 4px;
+}
+
+
+
+
+
+
+
+
+
+
+

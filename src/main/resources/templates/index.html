@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>首页</title>
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" th:href="@{/static/css/bootstarp/bootstrap.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/static/css/sweetalert/sweetalert2.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/static/css/font-awesome/font-awesome.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/static/css/custom/custom.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/static/css/jquery.nouislider.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/static/css/common.css}">
+
+</head>
+
+<body class="nav-md">
+    <div class="container body">
+        <div class="main_container">
+            <div class="col-md-3 left_col">
+                <div class="left_col scroll-view">
+                    <!-- 左边导航栏上的系统名称显示 -->
+                    <div th:replace="common/index_moudle :: nav_title"></div>
+                    <!-- 导航上方的用户信息 -->
+                    <div th:replace="common/index_moudle :: nav_top_userinfo"></div>
+                    <!-- 左边导航栏 -->
+                    <div th:replace="common/index_moudle :: left_menu"></div>
+                    <!-- 左边导航栏底部菜单 -->
+                    <div th:replace="common/index_moudle :: nav_foot"></div>
+                </div>
+            </div>
+
+            <!-- 头部导航栏 -->
+            <div th:replace="common/index_moudle :: nav_top"></div>
+            <!-- 开始 - 页面内容 -->
+            <div id="jr_main" class="right_col">
+
+                <!-- 开始 - 主要内容 -->
+                <div class="col-sm-12">
+
+                    <p style="padding-left: 10px;">
+                        <span class="h2">欢迎使用</span>
+                        <br />
+                        <span class="h6 text-muted">欢迎使用北大青鸟·科泰教育在线助学系统</span>
+                    </p>
+
+                    <!-- 开始 - 新闻公告 -->
+                    <div class="col-sm-9">
+                        <div class="panel panel-default">
+                            <div class="panel-heading"><strong>新闻公告</strong></div>
+                            <div class="panel-body">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>标题</th>
+                                            <th class="text-right">发布时间</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <span>
+                                                    [
+                                                    <a href="javascript:;">新闻分类</a>
+                                                    ]
+                                                </span>
+                                                <span>
+                                                    <a href="javascript:;">新闻标题</a>
+                                                </span>
+                                            </td>
+                                            <td class="text-right">
+                                                2018-03-29 16:33:59
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <span>
+                                                    [
+                                                    <a href="javascript:;">新闻分类</a>
+                                                    ]
+                                                </span>
+                                                <span>
+                                                    <a href="javascript:;">新闻标题</a>
+                                                </span>
+                                            </td>
+                                            <td class="text-right">
+                                                2018-03-29 16:33:59
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <span>
+                                                    [
+                                                    <a href="javascript:;">新闻分类</a>
+                                                    ]
+                                                </span>
+                                                <span>
+                                                    <a href="javascript:;">新闻标题</a>
+                                                </span>
+                                            </td>
+                                            <td class="text-right">
+                                                2018-03-29 16:33:59
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 结束 - 新闻公告 -->
+
+                    <!-- 开始 - 进行中的考试 -->
+                    <div class="col-sm-9">
+                        <div class="panel panel-default">
+                            <div class="panel-heading"><strong>进行中的考试</strong></div>
+
+                            <div class="panel-body">
+                                <table class="table jr-table">
+                                    <thead>
+                                        <tr>
+                                            <th>试卷名称</th>
+                                            <th>时间设定</th>
+                                            <th>考试时长</th>
+                                            <th>试卷类型</th>
+                                            <th>卷面总分</th>
+                                            <th>及格分数</th>
+                                            <th>操作</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>入职人员测试</td>
+                                            <td>
+                                                <span>2018-08-16 14:25:00.0</span><br />
+                                                <span>2020-10-16 14:26:00.0</span>
+                                            </td>
+                                            <td>
+                                                <strong class="h4">120</strong>
+                                                分钟
+                                            </td>
+                                            <td>普通试卷</td>
+                                            <td>
+                                                <strong class="h4">103</strong>
+                                            </td>
+                                            <td>
+                                                <strong class="h4">62</strong>
+                                            </td>
+                                            <td>
+                                                <span class="text-danger">超时为提交</span>
+                                                <i class="glyphicon glyphicon-question-sign text-primary"></i>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>入职人员测试</td>
+                                            <td>
+                                                <span>2018-08-16 14:25:00.0</span><br />
+                                                <span>2020-10-16 14:26:00.0</span>
+                                            </td>
+                                            <td>
+                                                <strong class="h4">120</strong>
+                                                分钟
+                                            </td>
+                                            <td>普通试卷</td>
+                                            <td>
+                                                <strong class="h4">103</strong>
+                                            </td>
+                                            <td>
+                                                <strong class="h4">62</strong>
+                                            </td>
+                                            <td>
+                                                <a href="javascript:;">开始考试</a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 结束 - 进行中的考试 -->
+
+                    <!-- 开始 - 参加过的考试 -->
+                    <div class="col-sm-9">
+                        <div class="panel panel-default">
+                            <div class="panel-heading"><strong>参加过的考试</strong></div>
+
+                            <div class="panel-body">
+                                <table class="table jr-table">
+                                    <thead>
+                                        <tr>
+                                            <th>试卷名称</th>
+                                            <th>考试时长</th>
+                                            <th>考试耗时</th>
+                                            <th>考试时间</th>
+                                            <th>试卷得分</th>
+                                            <th>操作</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>全体考试</td>
+                                            <td>
+                                                <strong class="h4">9999</strong>
+                                                分钟
+                                            </td>
+                                            <td>
+                                                <strong class="h4">0</strong>
+                                                分钟
+                                            </td>
+                                            <td>
+                                                <span>2018-11-21 11:17:36.0</span><br />
+                                                <span>2018-11-21 11:17:41.0</span>
+                                            </td>
+                                            <td>
+                                                <strong class="h4">0</strong>
+                                                <span class="text-danger small">不及格</span>
+                                            </td>
+                                            <td>
+                                                <a href="javascript:;">详情</a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 结束 - 参加过的考试 -->
+
+                </div>
+
+                <!-- 开始 - 最底部的声明啥的 -->
+                <div id="jr_foot" class="text-center">
+                    This is our graduation project, we must take it seriously
+                    <a href="" target="_blank" title="">北大青鸟·科泰教育</a>
+                    - Collect from
+                    <a href="" title="" target="_blank"></a>
+                </div>
+                <!-- 结束 - 最底部的声明啥的 -->
+            </div>
+            <!-- 结束 - 主要内容 -->
+        </div>
+        <!-- 结束 - 页面内容 -->
+
+    </div>
+    </div>
+
+</body>
+
+<!-- javaScript -->
+<script th:src="@{/static/js/jquery.min.js}"></script>
+<script th:src="@{/static/js/bootstarp/bootstrap.min.js}"></script>
+<script th:src="@{/static/js/sweetalert/sweetalert2.min.js}"></script>
+<script th:src="@{/static/js/custom/custom.min.js}"></script>
+<script th:src="@{/static/js/layout.js}"></script>
+<script th:src="@{/static/js/common.js}"></script>
+
+
+</html>

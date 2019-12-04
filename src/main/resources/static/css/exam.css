@@ -1,0 +1,70 @@
+/* 
+    试卷页面公共样式
+*/
+
+/* 题号样式 */
+.jr_tihao{
+    font-size: 14px;
+    line-height: 25px;
+    height: 25px; 
+    width: 30px;
+}
+
+/* 取消无序列表的点 */
+ul li{
+    list-style: none;
+}
+/* 选项字体不加粗 */
+li label{
+    font-weight: normal;
+}
+
+
+/* 右侧菜单 */
+.jr_caidan{
+    position: fixed;
+    top: 10%;
+}
+
+/* 右边菜单的上部分 */
+#jr_r_menu{
+    max-height: 450px;
+    overflow: auto;
+}
+
+/* 右侧菜单的悬停样式 */
+.list-inline li a:hover,.list-inline li a{
+    cursor: pointer;
+    color: black;
+    text-decoration: none;
+}
+
+/* 右侧菜单的默认样式 */
+.list-inline li{
+    float: left;
+    display: block;
+    border: 1px solid rgb(211, 207, 207);
+    margin-left: 4px;
+    margin-top: 4px;
+    width: 25px;
+    height: 25px;
+    line-height: 25px;
+    text-align: center;
+    cursor: pointer;
+}
+
+/* 题目错误时的样式 */
+.jr_error,.jr_error a,.jr_error a:hover{
+    background-color: red;
+    color: white !important;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+/* 题目正确时的样式 */
+.jr_success,.jr_success a,.jr_success a:hover{
+    background-color: green;
+    color: white !important;
+    cursor: pointer;
+    text-decoration: none;
+}

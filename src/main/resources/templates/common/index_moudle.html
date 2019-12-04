@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+    <meta charset="UTF-8">
+</head>
+<!-- 首页公共模块组件 -->
+<body>
+    <!-- 左边导航栏上的系统名称显示 -->
+    <div th:fragment="nav_title">
+        <div class="navbar nav_title" style="border: 0;">
+            <a th:href="@{/index.html}" class="site_title">
+                <img th:src="@{/static/image/logo.png}" width="25" />
+                <span>教学助手</span>
+            </a>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <!-- 导航上方的用户信息 -->
+    <div th:fragment="nav_top_userinfo" class="profile clearfix">
+        <div class="profile_pic">
+            <img th:src="@{/static/image/circle.png}" class="img-circle profile_img">
+        </div>
+        <div class="profile_info">
+            <h2><span>教员</span>[<span sec:authentication="principal.username"></span>]</h2>
+        </div>
+    </div>
+    <!-- 左边导航栏 -->
+    <div th:fragment="left_menu" id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+        <div class="menu_section">
+            <ul class="nav side-menu">
+                <li ><a><i class="fa fa-book"></i>学习系统<span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                        <li><a th:href="@{/subject/list.html}">课程列表</a></li>
+                        <li><a th:href="@{/subject/my_subject.html}">我的课程</a></li>
+                        <li><a href="#">模拟题库</a></li>
+                        <li><a th:href="@{/subject/search.html}">bug查找</a></li>
+                    </ul>
+                </li>
+                <li><a><i class="fa fa-book"></i>作业系统<span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                        <li sec:authorize="hasRole('ROLE_WORK_LIST')"><a th:href="@{/work/list.html}">作业列表</a></li>
+                        <li><a th:href="@{/work/add.html}">布置作业</a></li>
+                        <li><a th:href="@{/subject/search.html}">报告</a></li>
+                    </ul>
+                </li>
+                <li ><a><i class="fa fa-laptop"></i>考试系统<span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                        <li><a th:href="@{/test/history.html}">我的考试</a></li>
+                        <li><a th:href="@{/test/list.html}">考试记录</a></li>
+                    </ul>
+                </li>
+                <li ><a><i class="fa fa-edit"></i>检测系统<span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                        <li><a th:href="@{/exam/self_test_config.html}">自我检测</a></li>
+                        <li><a th:href="@{/exam/history.html}">检测记录</a></li>
+                        <li><a th:href="@{/exam/mistakes.html}">我的错题集</a></li>
+                    </ul>
+                </li>
+                <li><a><i class="fa fa-edit"></i>校内博客<span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                        <li><a th:href="@{/exam/self_test_config.html}">我的博客</a></li>
+                        <li><a th:href="@{/exam/history.html}">与我相关</a></li>
+                        <li><a th:href="@{/exam/mistakes.html}">发表博客</a></li>
+                    </ul>
+                </li>
+                <li><a><i class="fa fa-cogs"></i>账号管理<span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                        <li><a th:href="@{/user/info.html}">个人信息</a></li>
+                        <li><a th:href="@{/user/update_password.html}">修改密码</a></li>
+                    </ul>
+                </li>
+                <li ><a shiro:hasPermission="ROLE_ADMIN" ><i class="fa fa-cogs"></i>系统设置<span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                        <li><a th:href="@{/system/userlist.html}" >用户列表</a></li>
+                        <li><a th:href="@{/system/rolelist.html}" >角色列表</a></li>
+                        <li><a th:href="@{/system/permissionlist.html}" >权限列表</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- 左边导航栏底部菜单 -->
+    <div th:fragment="nav_foot" class="sidebar-footer hidden-small">
+        <a data-toggle="tooltip" data-placement="top" title="Settings">
+            <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+        </a>
+        <a data-toggle="tooltip" data-placement="top" title="FullScreen">
+            <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+        </a>
+        <a data-toggle="tooltip" data-placement="top" title="Lock">
+            <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+        </a>
+        <a data-toggle="tooltip" data-placement="top" title="Logout">
+            <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+        </a>
+    </div>
+    <!-- 头部导航栏 -->
+    <div th:fragment="nav_top" class="top_nav">
+        <div id="jr_top_nav" class="nav_menu">
+            <nav>
+                <div class="nav toggle">
+                    <a id="menu_toggle">
+                        <i class="fa fa-bars"></i>
+                    </a>
+                </div>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown"
+                           aria-expanded="false">
+                            <img th:src="@{/static/image/circle.png}"><!-- <span id="userId" style="display: none;" sec:authentication="principal.userId" > --></span><span id="username" sec:authentication="principal.username"></span>
+                            <span class=" fa fa-angle-down"></span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-usermenu pull-right">
+                            <li><a href="javascript:;">个人中心</a></li>
+                            <li>
+                                <a href="javascript:;">
+                                    <span class="badge bg-red pull-right">50%</span>
+                                    <span>设置</span>
+                                </a>
+                            </li>
+                            <li><a href="javascript:;">帮助</a></li>
+                            <li>
+                                <a th:href="@{/user/logout.html}">
+                                    <i class="fa fa-sign-out pull-right"></i>注销
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li role="presentation" class="dropdown">
+                        <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown"
+                           aria-expanded="false">
+                            <i class="fa fa-envelope-o"></i>
+                            <span class="badge bg-green">6</span>
+                        </a>
+                        <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
+                            <li>
+                                <a>
+                                            <span class="image">
+                                                <img th:src="@{/static/image/circle.png}" alt="Profile Image" /></span>
+                                    <span>
+                                                <span>litieelo</span>
+                                                <span class="time">3分钟前</span>
+                                            </span>
+                                    <span class="message">新的任务,请注意查收</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a>
+                                            <span class="image">
+                                                <img th:src="@{/static/image/circle.png}" alt="Profile Image" /></span>
+                                    <span>
+                                                <span>litieelo</span>
+                                                <span class="time">3分钟前</span>
+                                            </span>
+                                    <span class="message">新的任务,请注意查收</span>
+                                </a>
+                            </li>
+                            <li>
+                                <div class="text-center">
+                                    <a href="javascript:;">
+                                        <strong>查看所有消息</strong>
+                                        <i class="fa fa-angle-right"></i>
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</body>
+</html>

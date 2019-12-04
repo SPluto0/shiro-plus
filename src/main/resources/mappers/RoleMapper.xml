@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.future.shiroplus.mapper.RoleMapper">
+
+    <select id="findRoleById" resultType="com.future.shiroplus.domain.entity.Role">
+        select * from role where role_id = #{roleId}
+    </select>
+
+    <select id="findRoleAll" resultType="com.future.shiroplus.domain.entity.Role">
+           select * from role /*where role_name != 'admin'*/
+    </select>
+
+    <select id="findRoleByUserId"  resultType="com.future.shiroplus.domain.entity.Role">
+        SELECT
+            r.*
+        FROM
+            `user` u,
+            user_role ur,
+            role r
+        WHERE
+            u.user_id = ur.user_id
+            AND ur.role_id = r.role_id
+            AND u.user_id = #{userId}
+    </select>
+
+    <select id="findRoleExcludeUserId" resultType="com.future.shiroplus.domain.entity.Role">
+        SELECT
+            role_id,
+            role_name
+        FROM
+            role
+        WHERE
+            role_id NOT IN (
+              SELECT
+                  role_id
+              FROM
+                  user_role, `user`
+              WHERE
+                  `user`.user_id = user_role.user_id
+                  AND `user`.user_id = #{userId}
+            )
+    </select>
+
+    <update id="allotRole">
+
+    </update>
+</mapper>

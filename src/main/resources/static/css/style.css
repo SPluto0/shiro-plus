@@ -1,0 +1,38 @@
+body{
+    background-image: url(../image/login-bg-small.jpg);
+    background-size: cover;
+}
+.login{
+    width: 320px;
+    height: 520px;
+    position: fixed;
+    right: 2.5%;
+    /*背景颜色白色透明*/
+    background: rgba(255,255,255,1);
+    /*鍦嗚*/
+    border-radius:8px;
+}
+/*鐧诲綍妗嗗拰div鐨勮竟璺�*/
+.localform{
+    margin: 6% 6% 6%;
+}
+/*鐧婚檰鎻愮ず瀛椾綋澶у皬*/
+.tishi{
+    font-size:18px;
+}
+/*鍏嶈垂娉ㄥ唽瓒呴摼鎺ヤ笂杈硅窛*/
+.buttomA{
+    margin-top: 3%;
+}
+/*榧犳爣鎮诞浜嬩欢*/
+.buttomA a:hover{
+    cursor: pointer;
+    text-decoration: none;
+}
+
+/*右侧背景*/
+.right-bg{
+    height: 100%;
+    width: 400px;
+    background-color: rgba(255,255,255,0.6);
+}

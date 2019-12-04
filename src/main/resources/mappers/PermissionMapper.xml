@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.future.shiroplus.mapper.PermissionMapper">
+
+    <select id="findPermissionAll" resultType="com.future.shiroplus.domain.entity.Permission">
+           select * from permission /*where permission_name != 'admin'*/
+    </select>
+
+    <!-- <resultMap id="roletopermission" type="com.future.shiroplus.domain.entity.Role">
+         <id property="roleId" column="role_id"></id>
+         <result property="roleName" column="role_name"></result>
+         <collection property="rolePermissions" ofType="com.future.shiroplus.domain.entity.RolePermission">
+             <id property="rpId" column="rp_id"></id>
+             <result property="roleId" column="role_id"></result>
+             <result property="permissionId" column="permission_id"></result>
+             <collection property="permissions" ofType="com.future.shiroplus.domain.entity.Permission">
+                 <id property="permissionId" column="permission_id"></id>
+                 <result property="permissionName" column="permission_name"></result>
+                 <result property="remark" column="remark"></result>
+                 <result property="url" column="url"></result>
+             </collection>
+         </collection>
+     </resultMap>-->
+    <!--resultMap="roletopermission"-->
+    <select id="findRoleAndRolePermissionAndPermissionByRid" resultType="com.future.shiroplus.domain.entity.Permission" >
+        SELECT
+        p.permission_id,
+        p.permission_name,
+        p.remark
+        FROM
+        role r,
+        role_permission rp,
+        permission p
+        WHERE
+        r.role_id = rp.role_id
+        AND rp.permission_id = p.permission_id
+        AND r.role_id = #{rid}
+    </select>
+
+    <select id="findRoleAndRolePermissionAndPermissionExcludeRid" resultType="com.future.shiroplus.domain.entity.Permission" >
+        SELECT
+        permission_id,
+        remark
+        FROM
+        permission
+        WHERE
+        permission_id NOT IN (
+        SELECT
+        permission_id
+        FROM
+        role_permission,
+        role
+        WHERE role.role_id = role_permission.role_id AND role.role_id = #{rid} )
+    </select>
+</mapper>

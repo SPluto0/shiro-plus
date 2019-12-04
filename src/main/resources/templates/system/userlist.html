@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>用户列表</title>
+    <!-- CSS -->
+    <link rel="stylesheet" th:href="@{/static/css/bootstarp/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/static/css/sweetalert/sweetalert2.min.css}">
+    <link rel="stylesheet" th:href="@{/static/css/font-awesome/font-awesome.min.css}">
+    <link rel="stylesheet" th:href="@{/static/css/custom/custom.min.css}">
+    <link rel="stylesheet" th:href="@{/static/css/common.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/static/css/doublebox-bootstrap.css}" />
+    <style>
+        .ue-container {
+            width: 100%;
+            margin: 0 auto;
+            margin-top: 0%;
+            padding: 20px 40px;
+            /*border: 1px solid #ddd;*/
+            background: #fff;
+        }
+    </style>
+</head>
+
+<body class="nav-md">
+    <div class="container body">
+        <div class="main_container">
+            <div class="col-md-3 left_col">
+                <div class="left_col scroll-view">
+                    <!-- 左边导航栏上的系统名称显示 -->
+                    <div th:replace="common/index_moudle :: nav_title"></div>
+                    <!-- 导航上方的用户信息 -->
+                    <div th:replace="common/index_moudle :: nav_top_userinfo"></div>
+                    <!-- 左边导航栏 -->
+                    <div th:replace="common/index_moudle :: left_menu"></div>
+                    <!-- 左边导航栏底部菜单 -->
+                    <div th:replace="common/index_moudle :: nav_foot"></div>
+                </div>
+            </div>
+            <!-- 头部导航栏 -->
+            <div th:replace="common/index_moudle :: nav_top"></div>
+            <!-- 开始 - 页面内容 -->
+            <div id="jr_main" class="right_col">
+                <!-- 开始 - 头部路径导航条 -->
+                <ol class="breadcrumb">
+                    <li><a href="../index.html">首页</a></li>
+                    <li class="active">用户列表</li>
+                </ol>
+                <!-- 结束 - 头部路径导航条 -->
+
+                <!-- 开始 - 主要内容 -->
+                <div class="col-sm-12">
+                    <div class="panel panel-default contentCore">
+                        <div class="panel-heading">
+                            <span class="panel-title">
+                                <span class="h4">用户列表</span>
+                                <span class="h6 text-muted">以下列表中，默认排列出了当前系统用户，也可以根据以下条件进行筛选。</span>
+                            </span>
+                        </div>
+
+                        <table class="table jr-table">
+                            <thead>
+                            <tr >
+                            	<th>编号</th>
+                                <th>用户名</th>
+                                <th>年龄</th>
+                                <th>联系电话</th>
+                                <th>紧急联系电话</th>
+                                <th>qq号码</th>
+                                <th>生日</th>
+                                <th>性别</th>
+                                <th>操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            	<tr th:if="${userPageInfo.list != null}" th:id="${user.userId}" th:each="user:${userPageInfo.list}">
+                            		<td th:text="${user.userId}"></td>
+                            		<td th:text="${user.userName}">1</td>
+                            		<td th:text="${user.age}"></td>
+                            		<td th:text="${user.tel}"></td>
+                            		<td th:text="${user.urgencyTel}"></td>
+                            		<td th:text="${user.qq}"></td>
+                            		<td th:text="${#dates.format(user.bornDate, 'yyyy-MM-dd HH:mm:ss')}"></td>
+                            		<td th:text="${user.sex}"></td>
+                            		<td>
+                                        <a style="color: green;"  th:onclick="'javascript:allotPermission(this,'+${user.userId}+')'" data-toggle="modal" data-target="#allotPermission">分配角色</a>&nbsp;
+
+                            			<a style="color: #1979CA;" >修改资料</a>&nbsp;
+                            			<a style="color: red;" th:onclick="'javascript:deluser('+${user.userId}+')'">删除</a>
+                            		</td>
+                            	</tr>
+                            </tbody>
+                        </table>
+                        <div th:if="${userPageInfo.list != null}" class="panel-body text-center">
+                            <a th:if="${!userPageInfo.isFirstPage}" th:href="@{'/system/userlist.html?pageNum='+${userPageInfo.firstPage}}">首页</a> &nbsp;
+                            <a th:if="${userPageInfo.isFirstPage}" th:href="@{javascript:void(0)}" data-container="body"  data-trigger="focus" data-toggle="popover" data-placement="bottom" data-content="已经是第一页啦~">首页</a> &nbsp;
+                            <a th:href="@{${userPageInfo.pageNum==1?'javascript:;':'/system/userlist.html?pageNum='+userPageInfo.prePage}}">上一页</a> &nbsp;
+                            <a th:href="@{${userPageInfo.pageNum==userPageInfo.pages?'javascript:;':'/system/userlist.html?pageNum='+userPageInfo.nextPage}}">下一页</a> &nbsp;
+                            <a th:if="${!userPageInfo.isLastPage}" th:href="@{'/system/userlist.html?pageNum='+${userPageInfo.lastPage}}">尾页</a> &nbsp;
+                            <a th:if="${userPageInfo.isLastPage}" th:href="@{javascript:void(0)}" data-container="body"  data-trigger="focus" data-toggle="popover" data-placement="bottom" data-content="已经是最后一页啦~">尾页</a> &nbsp;
+                            <span>共&nbsp;<span id="totalSize" th:text="${userPageInfo.total}"></span>&nbsp;条记录</span>&nbsp;&nbsp;
+                            <span class="form-inline">
+                                <span>
+                                    <input id="jr_page" th:onblur="changePage(this)" th:value="${userPageInfo.pageNum}" class="form-control currPage" type="number" style="width: 42px;" />
+                                    &nbsp;/&nbsp;
+                                    <span id="totalPage" th:text="${userPageInfo.pages}"></span>
+                                    &nbsp;页&nbsp;&nbsp;
+                                </span>
+                                <span>
+                                    每页显示&nbsp;
+                                    <select onchange="selectSize()" class="form-control pageSize">
+                                        <option th:if="${userPageInfo.pageSize == 5}" th:selected="selected">5</option>
+                                        <option th:if="${userPageInfo.pageSize != 5}">5</option>
+                                        <option th:if="${userPageInfo.pageSize == 10}" th:selected="selected">10</option>
+                                        <option th:if="${userPageInfo.pageSize != 10}">10</option>
+                                        <option th:if="${userPageInfo.pageSize == 15}" th:selected="selected">15</option>
+                                        <option th:if="${userPageInfo.pageSize != 15}">15</option>
+                                    </select>
+                                    &nbsp;条
+                                </span>
+                            </span>
+                        </div>
+                        <!--没有数据的提示-->
+                        <div th:if="${userPageInfo.list == null}" style="color: red;" class="panel-body text-center">
+                        	<h2>您还没有录入学员信息哦~</h2>
+                        </div>
+                    </div>
+                </div>
+                 分配角色模态框（Modal）
+                <div class="modal fade" id="allotPermission" tabindex="-1" role="dialog"
+                     aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content" >
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal"
+                                        aria-hidden="true">×</button>
+                                <h4 class="modal-title" id="myModalLabel">分配角色窗口</h4>
+                            </div>
+                            <!-- 给角色分配权限双向选择框 -->
+                            <div class="ue-container">
+                                <input type="hidden" name="user_id">
+                                <select multiple="multiple" size="10" name="doublebox"
+                                        class="rlSelect">
+
+                                </select>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default"
+                                        data-dismiss="modal">取消</button>
+                                <button type="button" onclick="allotRole();" class="btn btn-primary">确认分配</button>
+                            </div>
+                        </div>
+                        <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                </div>
+                <!-- 开始 - 最底部的声明啥的 -->
+                <div id="jr_foot" class="text-center">
+                    This is our graduation project, we must take it seriously
+                    <a href="" target="_blank" title="">北大青鸟·科泰教育</a>
+                    - Collect from
+                    <a href="" title="" target="_blank"></a>
+                </div>
+                <!-- 结束 - 最底部的声明啥的 -->
+
+            </div>
+            <!-- 结束 - 主要内容 -->
+        </div>
+        <!-- 结束 - 页面内容 -->
+
+    </div>
+    </div>
+
+</body>
+<!-- javaScript -->
+<script th:src="@{/static/js/jquery.min.js}"></script>
+<script th:src="@{/static/js/bootstarp/bootstrap.min.js}"></script>
+<script th:src="@{/static/js/sweetalert/sweetalert2.min.js}"></script>
+<script th:src="@{/static/js/custom/custom.min.js}"></script>
+<script th:src="@{/static/js/layout.js}"></script>
+<script th:src="@{/static/js/system/userlist.js}"></script>
+<script th:src="@{/static/js/common.js}"></script>
+<script th:src="@{/static/js/doublebox-bootstrap.js}" type="text/javascript"></script>
+<script type="text/javascript">
+$(function () {
+	$("[data-toggle='popover']").popover();
+});
+</script>
+</html>
