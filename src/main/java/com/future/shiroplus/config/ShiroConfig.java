@@ -29,7 +29,9 @@ public class ShiroConfig {
         // 配置不会被拦截的链接 顺序判断
         filterChainDefinitionMap.put("/static/**", "anon");
         filterChainDefinitionMap.put("/web-login.html", "anon");
+        filterChainDefinitionMap.put("/web-register.html", "anon");
         filterChainDefinitionMap.put("/user/login", "anon");
+        filterChainDefinitionMap.put("/user/register", "anon");
         filterChainDefinitionMap.put("/user/logout.html","logout");
 
         filterChainDefinitionMap.put("/work/add.html","perms[ROLE_WORK_ADD]");

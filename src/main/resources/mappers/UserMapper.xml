@@ -6,5 +6,7 @@
         select * from user /*where user_name != 'admin'*/
     </select>
 
-
+    <select id="isRegist" resultType="com.future.shiroplus.domain.entity.User">
+        select * from user where user_name = #{userName}
+    </select>
 </mapper>

@@ -12,15 +12,15 @@
 <div class="right-bg pull-right">
     <div class="login">
         <div class="localform">
-            <span class="tishi">学员登录</span>
+            <span class="tishi">学员注册</span>
             <hr>
             <span style="display: none;" th:text="${redirect}" class="redirect"></span>
             <!-- onsubmit="return false;" -->
-            <form id="loginForm" action="/user/login" method="post">
+            <form id="loginForm" action="/user/register" method="post">
                 <div class="form-group has-success has-feedback">
                     <div class="input-group">
                         <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-                        <input type="text" name="userName" placeholder="请输入邮箱账号或者手机号" class="active form-control"
+                        <input type="text" name="userName" placeholder="请输入手机号" class="active form-control"
                                id="idcard" aria-describedby="inputGroupSuccess1Status">
                     </div>
                     <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
@@ -35,31 +35,32 @@
                     <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
                     <span id="inputGroupSuccess2Status" class="sr-only">(success)</span>
                 </div>
-                <!-- <input type="text" name="imageCode">
-                <img src="/code/image?1" id="imageCode"> -->
-                <div class="has-success">
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" name="remember-me" value="true">
-                            3天内自动登录
-                        </label>
+                <div class="form-group has-success has-feedback">
+                    <div class="input-group">
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+                        <input type="password" name="pwd2" placeholder="请再输入密码" class="form-control" id="pwd2"
+                               aria-describedby="inputGroupSuccess1Status" onblur="validate()" >
                     </div>
+                    <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+                    <span id="inputGroupSuccess3Status" class="sr-only">(success)</span>
                 </div>
-                <button type="submit" class="btn btn-primary btn-md btn-block">登陆</button>
-                <button type="submit" class="btn btn-default btn-md btn-block"><span class="fa fa-comments-o"></span>短信快捷登录
-                </button>
+                <button type="submit" class="btn btn-primary btn-md btn-block">注册</button>
             </form>
-            <div class="buttomA">
-                <a class="pull-left">忘记密码?</a><a class="pull-right">学员注册认证(自助)</a>
-            </div>
-            <p/>
-            <div class="buttomA">
-                <a class="pull-left" href="web-register.html">注册</a>
-            </div>
         </div>
     </div>
 </div>
 </body>
 <script type="text/javascript" th:src="@{~/static/js/jquery.min.js}"></script>
 <script type="text/javascript" th:src="@{~/static/js/login.js}"></script>
+
+<script>
+    function validate() {
+        var pwd1 = document.getElementById("pwd").value;
+        var pwd2 = document.getElementById("pwd2").value;
+        <!-- 对比两次输入的密码 -->
+        if(pwd1 != pwd2) {
+            alert("两次密码不相同");
+        }
+    }
+</script>
 </html>

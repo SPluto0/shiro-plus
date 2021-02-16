@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org" >
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
@@ -8,116 +8,121 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>作业列表</title>
     <!-- CSS -->
-    <link rel="stylesheet" th:href="@{/static/css/bootstarp/bootstrap.min.css}">
-    <link rel="stylesheet" th:href="@{/static/css/sweetalert/sweetalert2.min.css}">
-    <link rel="stylesheet" th:href="@{/static/css/font-awesome/font-awesome.min.css}">
-    <link rel="stylesheet" th:href="@{/static/css/custom/custom.min.css}">
-    <link rel="stylesheet" th:href="@{/static/css/common.css}">
-    <link rel="stylesheet" th:href="@{/static/css/bootstarp/daterangepicker-bs3.css}">
+    <link rel="stylesheet" th:href="@{~/static/css/bootstarp/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{~/static/css/sweetalert/sweetalert2.min.css}">
+    <link rel="stylesheet" th:href="@{~/static/css/font-awesome/font-awesome.min.css}">
+    <link rel="stylesheet" th:href="@{~/static/css/custom/custom.min.css}">
+    <link rel="stylesheet" th:href="@{~/static/css/common.css}">
+    <link rel="stylesheet" th:href="@{~/static/css/bootstarp/daterangepicker-bs3.css}">
 
 </head>
 
 <body class="nav-md">
-    <div class="container body">
-        <div class="main_container">
-            <div class="col-md-3 left_col">
-                <div class="left_col scroll-view">
-                    <!-- 左边导航栏上的系统名称显示 -->
-                    <div th:replace="common/index_moudle :: nav_title"></div>
-                    <!-- 导航上方的用户信息 -->
-                    <div th:replace="common/index_moudle :: nav_top_userinfo"></div>
-                    <!-- 左边导航栏 -->
-                    <div th:replace="common/index_moudle :: left_menu"></div>
-                    <!-- 左边导航栏底部菜单 -->
-                    <div th:replace="common/index_moudle :: nav_foot"></div>
-                </div>
+<div class="container body">
+    <div class="main_container">
+        <div class="col-md-3 left_col">
+            <div class="left_col scroll-view">
+                <!-- 左边导航栏上的系统名称显示 -->
+                <div th:replace="common/index_moudle :: nav_title"></div>
+                <!-- 导航上方的用户信息 -->
+                <div th:replace="common/index_moudle :: nav_top_userinfo"></div>
+                <!-- 左边导航栏 -->
+                <div th:replace="common/index_moudle :: left_menu"></div>
+                <!-- 左边导航栏底部菜单 -->
+                <div th:replace="common/index_moudle :: nav_foot"></div>
             </div>
-            <!-- 头部导航栏 -->
-            <div th:replace="common/index_moudle :: nav_top"></div>
-            <!-- 开始 - 页面内容 -->
-            <div id="jr_main" class="right_col">
-                <!-- 开始 - 头部路径导航条 -->
-                <ol class="breadcrumb">
-                    <li><a href="../index.html">首页</a></li>
-                    <li class="active">作业列表</li>
-                </ol>
-                <!-- 结束 - 头部路径导航条 -->
+        </div>
+        <!-- 头部导航栏 -->
+        <div th:replace="common/index_moudle :: nav_top"></div>
+        <!-- 开始 - 页面内容 -->
+        <div id="jr_main" class="right_col">
+            <!-- 开始 - 头部路径导航条 -->
+            <ol class="breadcrumb">
+                <li><a href="../index.html">首页</a></li>
+                <li class="active">作业列表</li>
+            </ol>
+            <!-- 结束 - 头部路径导航条 -->
 
-                <!-- 开始 - 主要内容 -->
-                <div class="col-sm-12">
-                    <!--搜索条件-->
-                    <form id="searchExamForm" class="form-horizontal">
-                        <div class="panel panel-default">
-                            <ul class="nav navbar-right panel_toolbox">
-                                <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                                </li>
-                                <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                                    <ul class="dropdown-menu" role="menu">
-                                        <li><a href="#">Settings 1</a>
-                                        </li>
-                                        <li><a href="#">Settings 2</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li><a class="close-link"><i class="fa fa-close"></i></a>
-                                </li>
-                            </ul>
-                            <div class="panel-body">
-                                <div class="row push-down-15">
-                                    <div class="form-group">
-                                        <label class="col-md-1 control-label text-left text-nowrap">所属课程</label>
-                                        <div class="col-md-2">
-                                            <select class="form-control select sub">
-                                                <option>JAVA</option>
-                                            </select>
-                                        </div>
+            <!-- 开始 - 主要内容 -->
+            <div class="col-sm-12">
+                <!--搜索条件-->
+                <form id="searchExamForm" class="form-horizontal">
+                    <div class="panel panel-default">
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                   aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="#">Settings 1</a>
+                                    </li>
+                                    <li><a href="#">Settings 2</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><a class="close-link"><i class="fa fa-close"></i></a>
+                            </li>
+                        </ul>
+                        <div class="panel-body">
+                            <div class="row push-down-15">
+                                <div class="form-group">
+                                    <label class="col-md-1 control-label text-left text-nowrap">所属课程</label>
+                                    <div class="col-md-2">
+                                        <select class="form-control select sub">
+                                            <option>JAVA</option>
+                                        </select>
+                                    </div>
 
-                                        <label class="col-md-1 control-label text-left">选择时间段</label>
-                                        <div class="col-md-2">
-                                            <div class="control-group">
-                                                <div class="controls">
-                                                    <div class="input-prepend input-group">
-                                                        <span class="add-on input-group-addon"><i class="glyphicon glyphicon-calendar fa fa-calendar"></i></span><input type="text" readonly style="width: 200px" name="reservation" id="reservation" class="form-control" value="2014-5-21 - 2014-6-21" />
-                                                    </div>
+                                    <label class="col-md-1 control-label text-left">选择时间段</label>
+                                    <div class="col-md-2">
+                                        <div class="control-group">
+                                            <div class="controls">
+                                                <div class="input-prepend input-group">
+                                                    <span class="add-on input-group-addon"><i
+                                                            class="glyphicon glyphicon-calendar fa fa-calendar"></i></span><input
+                                                        type="text" readonly style="width: 200px" name="reservation"
+                                                        id="reservation" class="form-control"
+                                                        value="2014-5-21 - 2014-6-21"/>
                                                 </div>
                                             </div>
                                         </div>
-
-                                        <label class="col-md-1 control-label text-left text-nowrap">状态</label>
-                                        <div class="col-md-2">
-                                            <select class="form-control select "
-                                                    name="stringStatus">
-                                                <option value="WAITING_LIST">已完成</option>
-                                                <option value="CREATE_CONNECT">未完成</option>
-                                                <option value="TESTING">超时未完成</option>
-                                            </select>
-                                        </div>
-
-                                        <div class="col-md-1">
-                                            <a class="btn btn-success">
-                                                <i class="fa fa-search"></i>搜索
-                                            </a>
-                                        </div>
-
                                     </div>
+
+                                    <label class="col-md-1 control-label text-left text-nowrap">状态</label>
+                                    <div class="col-md-2">
+                                        <select class="form-control select "
+                                                name="stringStatus">
+                                            <option value="WAITING_LIST">已完成</option>
+                                            <option value="CREATE_CONNECT">未完成</option>
+                                            <option value="TESTING">超时未完成</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="col-md-1">
+                                        <a class="btn btn-success">
+                                            <i class="fa fa-search"></i>搜索
+                                        </a>
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
-                    </form>
-                    <div class="panel panel-default contentCore">
-                        <div class="panel-heading">
+                    </div>
+                </form>
+                <div class="panel panel-default contentCore">
+                    <div class="panel-heading">
                             <span class="panel-title">
                                 <span class="h4">作业列表</span>
                                 <span class="h6 text-muted">以下列表中，默认排列出了当前一周的作业，也可以根据以下条件进行筛选。</span>
                             </span>
-                        </div>
+                    </div>
 
-                        <div class="panel-body">
+                    <div class="panel-body">
                         <table class="table jr-table">
                             <thead>
-                            <tr >
-                            	<th>编号</th>
+                            <tr>
+                                <th>编号</th>
                                 <th>作业标题</th>
                                 <th>下发老师</th>
                                 <th>所属课程</th>
@@ -128,46 +133,55 @@
                             </tr>
                             </thead>
                             <tbody>
-                            	<tr th:if="${workPageInfo.list != null}" th:id="${work.workId}" th:each="work:${workPageInfo.list}">
-                            		<td th:text="${work.workId}"></td>
-                            		<td th:text="${work.workName}">1</td>
-                            		<td th:text="${work.teacherName}"></td>
-                            		<td th:text="${work.courseName}"></td>
-                            		<td th:text="${#dates.format(work.decorateTime, 'yyyy-MM-dd HH:mm:ss')}"></td>
-                            		<td th:text="${#dates.format(work.takingTime, 'yyyy-MM-dd HH:mm:ss')}"></td>
-                            		<!-- <td th:text="${work.status}"></td> -->
-                            		<td>
-                            			<span class="blue" th:if="${work.status == 1}">暂未下发</span>
-	                            		<span class="green" th:if="${work.status == 2}">作业中</span>
-	                            		<span class="red" th:if="${work.status == 3}">已到指定时间只有部分同学已上交作业</span>
-	                            		<span th:if="${work.status == 4}">已到指定时间所有同学都已上交作业</span>
-	                            		<span class="bg-orange" th:if="${work.status == 5}">上交的作业已检查并反馈</span>
-                            		</td>
-                            		
-                            		<td>
-                            			<a>查看详情</a>&nbsp;
-                            			<a class="blue">修改</a>&nbsp;
-                            			<!-- th:href="@{'/work/delete/'+${work.id}+'.html'}" -->
-                            			<a class="red" th:onclick="'javascript:delwork('+${work.workId}+')'">删除</a>
-                            			<a class="green">
-                            				<span th:if="${work.isAccessory == -1}">前去完成</span>
-                            				<span th:if="${work.isAccessory == 1}">上传作业</span>
-                            			</a>
-                            		</td>
-                            	</tr>
+                            <tr th:if="${workPageInfo.list != null}" th:id="${work.workId}"
+                                th:each="work:${workPageInfo.list}">
+                                <td th:text="${work.workId}"></td>
+                                <td th:text="${work.workName}">1</td>
+                                <td th:text="${work.teacherName}"></td>
+                                <td th:text="${work.courseName}"></td>
+                                <td th:text="${#dates.format(work.decorateTime, 'yyyy-MM-dd HH:mm:ss')}"></td>
+                                <td th:text="${#dates.format(work.takingTime, 'yyyy-MM-dd HH:mm:ss')}"></td>
+                                <!-- <td th:text="${work.status}"></td> -->
+                                <td>
+                                    <span class="blue" th:if="${work.status == 1}">暂未下发</span>
+                                    <span class="green" th:if="${work.status == 2}">作业中</span>
+                                    <span class="red" th:if="${work.status == 3}">已到指定时间只有部分同学已上交作业</span>
+                                    <span th:if="${work.status == 4}">已到指定时间所有同学都已上交作业</span>
+                                    <span class="bg-orange" th:if="${work.status == 5}">上交的作业已检查并反馈</span>
+                                </td>
+
+                                <td>
+                                    <a>查看详情</a>&nbsp;
+                                    <a class="blue">修改</a>&nbsp;
+                                    <!-- th:href="@{'/work/delete/'+${work.id}+'.html'}" -->
+                                    <a class="red" th:onclick="'javascript:delwork('+${work.workId}+')'">删除</a>
+                                    <a class="green">
+                                        <span th:if="${work.isAccessory == -1}">前去完成</span>
+                                        <span th:if="${work.isAccessory == 1}">上传作业</span>
+                                    </a>························
+                                </td>
+                            </tr>
                             </tbody>
                         </table>
                         <div th:if="${workPageInfo.list != null}" class="panel-body text-center">
-                            <a th:if="${!workPageInfo.isFirstPage}" th:href="@{'/work/list.html?pageNum='+${workPageInfo.firstPage}}">首页</a> &nbsp;
-                            <a th:if="${workPageInfo.isFirstPage}" th:href="@{javascript:;}" data-container="body"  data-trigger="focus" data-toggle="popover" data-placement="bottom" data-content="已经是第一页啦~">首页</a> &nbsp;
-                            <a th:href="@{${workPageInfo.prePage<=0?'javascript:;':'/work/list.html?pageNum='+workPageInfo.prePage}}">上一页</a> &nbsp;
+                            <a th:if="${!workPageInfo.isFirstPage}"
+                               th:href="@{'/work/list.html?pageNum='+${workPageInfo.firstPage}}">首页</a> &nbsp;
+                            <a th:if="${workPageInfo.isFirstPage}" th:href="@{javascript:;}" data-container="body"
+                               data-trigger="focus" data-toggle="popover" data-placement="bottom"
+                               data-content="已经是第一页啦~">首页</a> &nbsp;
+                            <a th:href="@{${workPageInfo.prePage<=0?'javascript:;':'/work/list.html?pageNum='+workPageInfo.prePage}}">上一页</a>
+                            &nbsp;
                             <a th:href="@{'/work/list.html?pageNum='+${workPageInfo.nextPage}}">下一页</a> &nbsp;
-                            <a th:if="${!workPageInfo.isLastPage}" th:href="@{'/work/list.html?pageNum='+${workPageInfo.lastPage}}">尾页</a> &nbsp;
-                            <a th:if="${workPageInfo.isLastPage}" th:href="@{javascript:;}" data-container="body"  data-trigger="focus" data-toggle="popover" data-placement="bottom" data-content="已经是最后一页啦~">尾页</a> &nbsp;
+                            <a th:if="${!workPageInfo.isLastPage}"
+                               th:href="@{'/work/list.html?pageNum='+${workPageInfo.lastPage}}">尾页</a> &nbsp;
+                            <a th:if="${workPageInfo.isLastPage}" th:href="@{javascript:;}" data-container="body"
+                               data-trigger="focus" data-toggle="popover" data-placement="bottom"
+                               data-content="已经是最后一页啦~">尾页</a> &nbsp;
                             <span>共&nbsp;<span id="totalSize" th:text="${workPageInfo.total}"></span>&nbsp;条记录</span>&nbsp;&nbsp;
                             <span class="form-inline">
                                 <span>
-                                    <input id="jr_page" th:onblur="changePage(this)" th:value="${workPageInfo.pageNum}" class="form-control currPage" type="number" style="width: 42px;" />
+                                    <input id="jr_page" th:onblur="changePage(this)" th:value="${workPageInfo.pageNum}"
+                                           class="form-control currPage" type="number" style="width: 42px;"/>
                                     &nbsp;/&nbsp;
                                     <span id="totalPage" th:text="${workPageInfo.pages}"></span>
                                     &nbsp;页&nbsp;&nbsp;
@@ -177,9 +191,11 @@
                                     <select onchange="selectSize()" class="form-control pageSize">
                                         <option th:if="${workPageInfo.pageSize == 5}" th:selected="selected">5</option>
                                         <option th:if="${workPageInfo.pageSize != 5}">5</option>
-                                        <option th:if="${workPageInfo.pageSize == 10}" th:selected="selected">10</option>
+                                        <option th:if="${workPageInfo.pageSize == 10}"
+                                                th:selected="selected">10</option>
                                         <option th:if="${workPageInfo.pageSize != 10}">10</option>
-                                        <option th:if="${workPageInfo.pageSize == 15}" th:selected="selected">15</option>
+                                        <option th:if="${workPageInfo.pageSize == 15}"
+                                                th:selected="selected">15</option>
                                         <option th:if="${workPageInfo.pageSize != 15}">15</option>
                                     </select>
                                     &nbsp;条
@@ -187,41 +203,33 @@
                             </span>
                         </div>
                     </div>
-                    </div>
                 </div>
-                <!-- 开始 - 最底部的声明啥的 -->
-                <div id="jr_foot" class="text-center">
-                    This is our graduation project, we must take it seriously
-                    <a href="" target="_blank" title="">北大青鸟·科泰教育</a>
-                    - Collect from
-                    <a href="" title="" target="_blank"></a>
-                </div>
-                <!-- 结束 - 最底部的声明啥的 -->
             </div>
-            <!-- 结束 - 主要内容 -->
         </div>
-        <!-- 结束 - 页面内容 -->
+        <!-- 结束 - 主要内容 -->
+    </div>
+    <!-- 结束 - 页面内容 -->
 
-    </div>
-    </div>
+</div>
+</div>
 
 </body>
 <!-- javaScript -->
-<script th:src="@{/static/js/jquery.min.js}"></script>
-<script th:src="@{/static/js/bootstarp/bootstrap.min.js}"></script>
-<script th:src="@{/static/js/sweetalert/sweetalert2.min.js}"></script>
-<script th:src="@{/static/js/bootstarp/moment.js}"></script>
-<script th:src="@{/static/js/bootstarp/daterangepicker.js}"></script>
-<script th:src="@{/static/js/custom/custom.min.js}"></script>
-<script th:src="@{/static/js/layout.js}"></script>
-<script th:src="@{/static/js/work/list.js}"></script>
-<script th:src="@{/static/js/common.js}"></script>
+<script th:src="@{~/static/js/jquery.min.js}"></script>
+<script th:src="@{~/static/js/bootstarp/bootstrap.min.js}"></script>
+<script th:src="@{~/static/js/sweetalert/sweetalert2.min.js}"></script>
+<script th:src="@{~/static/js/bootstarp/moment.js}"></script>
+<script th:src="@{~/static/js/bootstarp/daterangepicker.js}"></script>
+<script th:src="@{~/static/js/custom/custom.min.js}"></script>
+<script th:src="@{~/static/js/layout.js}"></script>
+<script th:src="@{~/static/js/work/list.js}"></script>
+<script th:src="@{~/static/js/common.js}"></script>
 <script type="text/javascript">
-$(function () { 
-	$("[data-toggle='popover']").popover();
-    $('#reservation').daterangepicker(null, function(start, end, label) {
-        console.log(start.toISOString(), end.toISOString(), label);
+    $(function () {
+        $("[data-toggle='popover']").popover();
+        $('#reservation').daterangepicker(null, function (start, end, label) {
+            console.log(start.toISOString(), end.toISOString(), label);
+        });
     });
-});
 </script>
 </html>

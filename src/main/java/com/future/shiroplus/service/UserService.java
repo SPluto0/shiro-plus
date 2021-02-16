@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface UserService {
     List<User> findUserAll();
+
+    boolean regist(String userName, String pwd);
 }

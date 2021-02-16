@@ -23,46 +23,18 @@
             <img th:src="@{/static/image/circle.png}" class="img-circle profile_img">
         </div>
         <div class="profile_info">
-            <h2><span>教员</span>[<span sec:authentication="principal.username"></span>]</h2>
+            <h2><span>老师</span>[<span sec:authentication="principal.username"></span>]</h2>
         </div>
     </div>
     <!-- 左边导航栏 -->
     <div th:fragment="left_menu" id="sidebar-menu" class="main_menu_side hidden-print main_menu">
         <div class="menu_section">
             <ul class="nav side-menu">
-                <li ><a><i class="fa fa-book"></i>学习系统<span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                        <li><a th:href="@{/subject/list.html}">课程列表</a></li>
-                        <li><a th:href="@{/subject/my_subject.html}">我的课程</a></li>
-                        <li><a href="#">模拟题库</a></li>
-                        <li><a th:href="@{/subject/search.html}">bug查找</a></li>
-                    </ul>
-                </li>
                 <li><a><i class="fa fa-book"></i>作业系统<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                         <li sec:authorize="hasRole('ROLE_WORK_LIST')"><a th:href="@{/work/list.html}">作业列表</a></li>
                         <li><a th:href="@{/work/add.html}">布置作业</a></li>
                         <li><a th:href="@{/subject/search.html}">报告</a></li>
-                    </ul>
-                </li>
-                <li ><a><i class="fa fa-laptop"></i>考试系统<span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                        <li><a th:href="@{/test/history.html}">我的考试</a></li>
-                        <li><a th:href="@{/test/list.html}">考试记录</a></li>
-                    </ul>
-                </li>
-                <li ><a><i class="fa fa-edit"></i>检测系统<span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                        <li><a th:href="@{/exam/self_test_config.html}">自我检测</a></li>
-                        <li><a th:href="@{/exam/history.html}">检测记录</a></li>
-                        <li><a th:href="@{/exam/mistakes.html}">我的错题集</a></li>
-                    </ul>
-                </li>
-                <li><a><i class="fa fa-edit"></i>校内博客<span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                        <li><a th:href="@{/exam/self_test_config.html}">我的博客</a></li>
-                        <li><a th:href="@{/exam/history.html}">与我相关</a></li>
-                        <li><a th:href="@{/exam/mistakes.html}">发表博客</a></li>
                     </ul>
                 </li>
                 <li><a><i class="fa fa-cogs"></i>账号管理<span class="fa fa-chevron-down"></span></a>
