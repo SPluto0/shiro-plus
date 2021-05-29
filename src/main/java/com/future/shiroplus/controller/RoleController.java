@@ -20,11 +20,23 @@ import java.util.Map;
 public class RoleController {
     @Autowired
     private RoleService roleService;
+
+    /**
+     * 根据用户id查询所对应的权限 admin、student、teacher
+     * @param userId
+     * @return
+     */
     @GetMapping("/system/user/role/{userId}")
     public List selectedList(@PathVariable("userId")Integer userId){
         List<Role> list = roleService.findRoleByUserId(userId);
         return list;
     }
+
+    /**
+     * 根据用户id查询该用户没有的权限 admin、student、teacher
+     * @param userId
+     * @return
+     */
     @GetMapping("/system/user/nonrole/{userId}")
     public List nonSelectedList(@PathVariable("userId")Integer userId){
         List<Role> list = roleService.findRoleExcludeUserId(userId);

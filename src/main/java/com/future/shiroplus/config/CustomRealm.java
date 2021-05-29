@@ -15,9 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
-/**
- * @Date 2019/11/27 18:32
- */
+
 public class CustomRealm extends AuthorizingRealm {
 
     @Autowired
@@ -52,16 +50,15 @@ public class CustomRealm extends AuthorizingRealm {
         //从主体获取传过来的用户
         String userName=(String)token.getPrincipal();
         //通过用户传过来从数据库进行密码
-        String password=userDTOService.loginPassword(userName);
+        UserDTO userDTO=userDTOService.loginPassword(userName);
+        String password = userDTO.getPwd();
         if(password == null){
             return null;
         }
-        //加盐
-        ByteSource salt = ByteSource.Util.bytes(userName);
         //获取当前自定义的realm
         String realmName = this.getName();
 
-        SimpleAuthenticationInfo simpleAuthenticationInfo=new SimpleAuthenticationInfo(userName, password, salt, realmName);
+        SimpleAuthenticationInfo simpleAuthenticationInfo=new SimpleAuthenticationInfo(userName, password, ByteSource.Util.bytes(userDTO.getSignature()), realmName);
         return simpleAuthenticationInfo;
     }
 

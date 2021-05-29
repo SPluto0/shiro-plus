@@ -9,9 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-/**
- * @Date 2019/11/27 19:38
- */
+
 @Service
 public class UserDTOServiceImpl implements UserDTOService {
     @Autowired
@@ -23,8 +21,8 @@ public class UserDTOServiceImpl implements UserDTOService {
     }
 
     @Override
-    public String loginPassword(String userName) {
+    public UserDTO loginPassword(String userName) {
         UserDTO userDTO = userDTOMapper.findUserDTOByUserNameTO(userName);
-        return userDTO.getPwd();
+        return userDTO;
     }
 }

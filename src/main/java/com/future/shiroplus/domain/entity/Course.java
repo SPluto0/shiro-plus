@@ -5,7 +5,7 @@ import lombok.Data;
 import java.sql.Timestamp;
 
 /**
- * @Date 2019/11/30 14:35
+ * 实体类，对应数据库里面的字段，将查询数据库的结果映射进去
  */
 @Data
 public class Course {

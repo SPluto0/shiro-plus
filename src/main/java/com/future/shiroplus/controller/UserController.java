@@ -24,11 +24,9 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
-/**
- * @Date 2019/11/27 19:55
- */
 @Controller
 public class UserController {
+    // servicec层表示业务逻辑层，具体实现写在里面
     @Autowired
     private UserService userService;
     @Autowired
@@ -36,6 +34,13 @@ public class UserController {
     @Autowired
     private PermissionService permissionService;
 
+    /**
+     * 用户登录
+     * @param userName 用户名称
+     * @param pwd 密码
+     * @param request
+     * @return
+     */
     @PostMapping("/user/login")
     public String login(String userName, String pwd, HttpServletRequest request) {
         Subject subject = SecurityUtils.getSubject();
@@ -54,6 +59,14 @@ public class UserController {
         return "web-login";
     }
 
+    /**
+     * 用户注册
+     * @param userName 用户名称
+     * @param pwd 密码
+     * @param pwd2 密码
+     * @param request
+     * @return
+     */
     @PostMapping("/user/register")
     public String register(String userName, String pwd, String pwd2, HttpServletRequest request) {
         if (!StringUtils.isEmpty(pwd) && !StringUtils.isEmpty(pwd2) && pwd.equals(pwd2)) {
@@ -82,6 +95,11 @@ public class UserController {
         return map;
     }
 
+    /**
+     * 查询所有权限
+     * @param pageNum
+     * @return
+     */
     @GetMapping("/system/rolelist.html")
     public ModelAndView rolePageInfo(Integer pageNum) {
         if (pageNum == null || pageNum == 0) {
@@ -97,6 +115,12 @@ public class UserController {
         return map;
     }
 
+
+    /**
+     * 查询所有功能页
+     * @param pageNum
+     * @return
+     */
     @GetMapping("/system/permissionlist.html")
     public ModelAndView permissionPageInfo(Integer pageNum) {
         if (pageNum == null || pageNum == 0) {

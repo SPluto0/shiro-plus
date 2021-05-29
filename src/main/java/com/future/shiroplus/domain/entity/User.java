@@ -6,9 +6,7 @@ import lombok.ToString;
 import java.io.Serializable;
 import java.sql.Timestamp;
 
-/**
- * @Date 2019/11/27 18:22
- */
+
 @Data
 @ToString
 public class User implements Serializable {

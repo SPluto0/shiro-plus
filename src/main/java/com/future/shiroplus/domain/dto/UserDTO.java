@@ -2,9 +2,7 @@ package com.future.shiroplus.domain.dto;
 
 import lombok.Data;
 
-/**
- * @Date 2019/11/27 19:24
- */
+
 @Data
 public class UserDTO {
     private String userId;
@@ -15,4 +13,5 @@ public class UserDTO {
     private String remark;
     private String url;
 
+    private String signature;
 }

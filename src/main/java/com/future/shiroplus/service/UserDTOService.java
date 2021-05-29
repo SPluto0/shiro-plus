@@ -12,5 +12,5 @@ import java.util.List;
 public interface UserDTOService {
     List<UserDTO> queryRolse(String username);
 
-    String loginPassword(String username);
+    UserDTO loginPassword(String username);
 }

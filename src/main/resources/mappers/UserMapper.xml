@@ -9,4 +9,9 @@
     <select id="isRegist" resultType="com.future.shiroplus.domain.entity.User">
         select * from user where user_name = #{userName}
     </select>
+
+    <insert id="insert" parameterType="com.future.shiroplus.domain.entity.User">
+        INSERT INTO `user`(`user_name`, `pwd`, `tel`, `dept_id`, `signature`)
+        VALUES (#{userName},#{pwd},#{userName},1 ,#{signature});
+    </insert>
 </mapper>

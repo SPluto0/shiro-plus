@@ -12,11 +12,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * @Date 2019/11/27 20:01
- */
+
 @Service
 public class UserServiceImpl implements UserService {
+    // Mapper 数据库访问层，通过这一层获取数据库对应数据
     @Autowired
     private UserMapper userMapper;
     @Override
@@ -34,12 +33,14 @@ public class UserServiceImpl implements UserService {
         Map<String, String> map = encryption(pwd);
         user.setUserName(userName);
         user.setPwd(map.get("password"));
-        return false;
+        user.setSignature(map.get("salt"));
+        userMapper.insert(user);
+        return true;
     }
 
     public Map<String,String> encryption(String pwd){
         String salt = new SecureRandomNumberGenerator().nextBytes().toHex();
-        String password = new Md5Hash(pwd, salt, 2).toString();
+        String password = new Md5Hash(pwd, salt,1024).toString();
         Map<String,String> map = new HashMap<>();
         map.put("salt",salt);
         map.put("password",password);

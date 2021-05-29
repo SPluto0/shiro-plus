@@ -17,11 +17,23 @@ import java.util.List;
 public class PermissionController {
     @Autowired
     private PermissionService permissionService;
+
+    /**
+     * 根据用户权限id查询用户拥有的权限列表（左侧菜单栏）
+     * @param rid
+     * @return
+     */
     @GetMapping("/system/role/permission/{rid}")
     public List selectedList(@PathVariable("rid")Integer rid){
         List<Permission> list = permissionService.findRoleAndRolePermissionAndPermissionByRid(rid);
         return list;
     }
+
+    /**
+     * 根据用户权限id查询用户没有的权限列表（左侧菜单栏）
+     * @param rid
+     * @return
+     */
     @GetMapping("/system/role/nonpermission/{rid}")
     public List nonSelectedList(@PathVariable("rid")Integer rid){
         List<Permission> list = permissionService.findRoleAndRolePermissionAndPermissionExcludeRid(rid);

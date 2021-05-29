@@ -13,18 +13,21 @@ import org.springframework.context.annotation.Configuration;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-/**
- * @Date 2019/11/27 18:34
- */
+
 @Configuration
 public class ShiroConfig {
 
+    /**
+     * 权限路径配置
+     * @param securityManager
+     * @return
+     */
     @Bean
-        public ShiroFilterFactoryBean shiroFilterFactoryBean(SecurityManager securityManager){
-        ShiroFilterFactoryBean shiroFilterFactoryBean=new ShiroFilterFactoryBean();
+    public ShiroFilterFactoryBean shiroFilterFactoryBean(SecurityManager securityManager) {
+        ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
         shiroFilterFactoryBean.setSecurityManager(securityManager);
         // 拦截器。匹配原则是最上面的最优先匹配
-        Map<String,String> filterChainDefinitionMap = new LinkedHashMap<String,String>();
+        Map<String, String> filterChainDefinitionMap = new LinkedHashMap<String, String>();
         // 配置不会被拦截的链接
         // 配置不会被拦截的链接 顺序判断
         filterChainDefinitionMap.put("/static/**", "anon");
@@ -32,9 +35,9 @@ public class ShiroConfig {
         filterChainDefinitionMap.put("/web-register.html", "anon");
         filterChainDefinitionMap.put("/user/login", "anon");
         filterChainDefinitionMap.put("/user/register", "anon");
-        filterChainDefinitionMap.put("/user/logout.html","logout");
+        filterChainDefinitionMap.put("/user/logout.html", "logout");
 
-        filterChainDefinitionMap.put("/work/add.html","perms[ROLE_WORK_ADD]");
+        filterChainDefinitionMap.put("/work/add.html", "perms[ROLE_WORK_ADD]");
 
         filterChainDefinitionMap.put("/system/userlist.html", "roles[admin]");
         filterChainDefinitionMap.put("/system/rolelist.html", "roles[admin]");
@@ -45,16 +48,16 @@ public class ShiroConfig {
         // 如果不设置默认会自动寻找Web工程根目录下的"/login.jsp"页面
         shiroFilterFactoryBean.setLoginUrl("/web-login.html");
 //        // 登录成功后要跳转的链接
-     	shiroFilterFactoryBean.setSuccessUrl("/index.html");
+        shiroFilterFactoryBean.setSuccessUrl("/index.html");
 //     	//未授权界面;
-    	shiroFilterFactoryBean.setUnauthorizedUrl("/error/unAuth.html");
+        shiroFilterFactoryBean.setUnauthorizedUrl("/error/unAuth.html");
 
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
         return shiroFilterFactoryBean;
     }
 
     @Bean
-    public CustomRealm myShiroRealm(HashedCredentialsMatcher matcher){
+    public CustomRealm myShiroRealm(HashedCredentialsMatcher matcher) {
         CustomRealm myShiroRealm = new CustomRealm();
         myShiroRealm.setCredentialsMatcher(matcher);
         return myShiroRealm;
@@ -62,8 +65,8 @@ public class ShiroConfig {
 
 
     @Bean
-    public SecurityManager securityManager(HashedCredentialsMatcher matcher){
-        DefaultWebSecurityManager securityManager =  new DefaultWebSecurityManager();
+    public SecurityManager securityManager(HashedCredentialsMatcher matcher) {
+        DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
         securityManager.setRealm(myShiroRealm(matcher));
         return securityManager;
     }
@@ -72,6 +75,7 @@ public class ShiroConfig {
      * 密码加密配置
      * 加密次数
      * 并给realm
+     *
      * @return
      */
     @Bean
@@ -85,12 +89,13 @@ public class ShiroConfig {
     }
 
     /**
-     *  开启Shiro的注解(如@RequiresRoles,@RequiresPermissions),需借助SpringAOP扫描使用Shiro注解的类,并在必要时进行安全逻辑验证
+     * 开启Shiro的注解(如@RequiresRoles,@RequiresPermissions),需借助SpringAOP扫描使用Shiro注解的类,并在必要时进行安全逻辑验证
      * 配置以下两个bean(DefaultAdvisorAutoProxyCreator和AuthorizationAttributeSourceAdvisor)即可实现此功能
+     *
      * @return
      */
     @Bean
-    public DefaultAdvisorAutoProxyCreator advisorAutoProxyCreator(){
+    public DefaultAdvisorAutoProxyCreator advisorAutoProxyCreator() {
         DefaultAdvisorAutoProxyCreator advisorAutoProxyCreator = new DefaultAdvisorAutoProxyCreator();
         advisorAutoProxyCreator.setProxyTargetClass(true);
         return advisorAutoProxyCreator;
@@ -98,6 +103,7 @@ public class ShiroConfig {
 
     /**
      * 开启aop注解支持
+     *
      * @param securityManager
      * @return
      */
@@ -107,8 +113,9 @@ public class ShiroConfig {
         authorizationAttributeSourceAdvisor.setSecurityManager(securityManager);
         return authorizationAttributeSourceAdvisor;
     }
+
     @Bean
-    public ShiroDialect getShiroDialect(){
+    public ShiroDialect getShiroDialect() {
         return new ShiroDialect();
     }
     //整合shiroDialect:用来整合 shiro 和 thymeleaf

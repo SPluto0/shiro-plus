@@ -10,16 +10,17 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.ArrayList;
 import java.util.Date;
 
-/**
- * @Date 2019/11/29 15:11
- */
+
 @Controller
 public class PageNameController {
+
     @GetMapping("/{pageName}.html")
-    public String pageName(@PathVariable("pageName")String pageName){
+    public String pageName(@PathVariable("pageName") String pageName) {
         return pageName;
     }
-   static Work work = new Work();
+
+    static Work work = new Work();
+
     static {
         work.setWorkId(1);
         work.setWorkName("作业");
@@ -40,14 +41,14 @@ public class PageNameController {
     }
 
     @GetMapping("/{pageName}/{pageNameTow}.html")
-    public ModelAndView pageNameTwo(@PathVariable("pageName") String pageName,@PathVariable("pageNameTow") String pageNameTow){
-        ModelAndView map = new ModelAndView( pageName+"/"+ pageNameTow);
-        if("work".equals(pageName) && "list".equals(pageNameTow)){
-            WorkPageInfo workPageInfo =new WorkPageInfo();
+    public ModelAndView pageNameTwo(@PathVariable("pageName") String pageName, @PathVariable("pageNameTow") String pageNameTow) {
+        ModelAndView map = new ModelAndView(pageName + "/" + pageNameTow);
+        if ("work".equals(pageName) && "list".equals(pageNameTow)) {
+            WorkPageInfo workPageInfo = new WorkPageInfo();
             ArrayList<Work> list = new ArrayList<>();
-            list.add(work) ;
+            list.add(work);
             workPageInfo.setList(list);
-            map.addObject("workPageInfo",workPageInfo);
+            map.addObject("workPageInfo", workPageInfo);
         }
         return map;
     }

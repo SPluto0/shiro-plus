@@ -10,4 +10,6 @@ public interface UserMapper {
     List<User> findUserAll();
 
     User isRegist(String userName);
+
+    void insert(User user);
 }
